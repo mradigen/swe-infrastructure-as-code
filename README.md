@@ -127,12 +127,3 @@ Each directory contains its own README with detailed information about the confi
 | **TP Link WR840N v6** | Network access   | Access Point mode, DHCP disabled, WiFi disabled |
 
 </details>
-
-## **To-Do**
-
-- [x] Readme
-- [x] Setup basic o11y
-- [ ] Add metrics to Proxmox
-- [ ] Make Terraform and Packer fetch secrets from Vault
-- [ ] Setup a CI/CD pipeline
-- [ ] Migrate services to k3s
