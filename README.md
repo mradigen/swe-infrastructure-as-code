@@ -1,6 +1,6 @@
 <div align="center">
 
-# Homelab
+# Infrastructure-as-Code
 
 [![Baikal](https://img.shields.io/badge/-Baikal-black?style=for-the-badge&logo=googlecalendar)](https://sabre.io/baikal/) [![Balti](https://img.shields.io/badge/-Balti-black?style=for-the-badge&logo=bitbucket)](https://github.com/mradigen/balti) [![MinIO](https://img.shields.io/badge/-Balti%20MinIO-black?style=for-the-badge&logo=minio)](https://min.io/) [![Borgmatic](https://img.shields.io/badge/-Borgmatic-black?style=for-the-badge&logo=borgbackup)](https://torsion.org/borgmatic/) [![Chota](https://img.shields.io/badge/-Chota-black?style=for-the-badge&logo=curl)](https://github.com/mradigen/chota) [![Flatnotes](https://img.shields.io/badge/-Flatnotes-black?style=for-the-badge&logo=markdown)](https://github.com/dullage/flatnotes) [![Syncthing](https://img.shields.io/badge/-Syncthing-black?style=for-the-badge&logo=syncthing)](https://syncthing.net/) [![Headscale](https://img.shields.io/badge/-Headscale-black?style=for-the-badge&logo=tailscale)](https://headscale.net/) [![HomeAssistant](https://img.shields.io/badge/-HomeAssistant-black?style=for-the-badge&logo=homeassistant)](<[https://github.com/dani-garcia/vaultwarden](https://www.home-assistant.io/)>) [![Immich](https://img.shields.io/badge/-Immich-black?style=for-the-badge&logo=immich)](https://immich.app/) [![Kachra](https://img.shields.io/badge/-Kachra-black?style=for-the-badge&logo=pastebin)](https://github.com/mradigen/kachra) [![n8n](https://img.shields.io/badge/-n8n-black?style=for-the-badge&logo=n8n)](https://n8n.io/) [![Paperless NGX](https://img.shields.io/badge/-Paperless%20NGX-black?style=for-the-badge&logo=paperlessngx)](https://docs.paperless-ngx.com/) [![Traefik](https://img.shields.io/badge/-Traefik-black?style=for-the-badge&logo=traefikproxy)](https://traefik.io/) [![TUI Suite](https://img.shields.io/badge/-TUI%20Suite-black?style=for-the-badge&logo=termius)](https://github.com/) [![Vaultwarden](https://img.shields.io/badge/-Vaultwarden-black?style=for-the-badge&logo=bitwarden)](https://github.com/dani-garcia/vaultwarden)
 
@@ -10,11 +10,18 @@
 
 </div>
 
-<h2>📐 <b>Diagram</b> </h2>
+<h2><b>Diagrams</b> </h2>
+
 
 ![Architecture](.github/architecture.webp?id=2)
 
-## 📖 **Overview**
+![Archi](design/archi.png)
+
+![CI](design/ci.png)
+
+## **Overview**
+
+This infrastructure follows a **Hybrid Layered Architecture**, decoupling stateful heavy workloads (hosted on-premise for cost efficiency) from critical stateless services (hosted on a cloud VPS for high availability). The system adheres to **Infrastructure as Code (IaC)** principles, using Terraform for modular resource provisioning and Ansible for configuration management to ensure the entire environment is reproducible and self-healing. Security is enforced through a **Zero-Trust Overlay Network** (Headscale/Tailscale), allowing secure, port-agnostic access to internal services without exposing them to the public internet.
 
 This repository contains the IaC ([Infrastructure as Code](https://en.wikipedia.org/wiki/Infrastructure_as_code)) configuration for my homelab.
 
@@ -53,7 +60,7 @@ All environment variables and secrets and stored in **HashiCorp's Vault**, and i
 | URL Shortener         | [Chota](https://github.com/mradigen/chota)                                                |
 | Pastebin              | [Kachra](https://github.com/mradigen/kachra)                                              |
 
-## 📁 **Repository Structure**
+## **Repository Structure**
 
 ```
 .
@@ -66,7 +73,7 @@ All environment variables and secrets and stored in **HashiCorp's Vault**, and i
 
 Each directory contains its own README with detailed information about the configurations and usage.
 
-## 🖥️ **Hardware**
+## **Hardware**
 
 <details>
   <summary><strong>Setup</strong></summary>
@@ -121,7 +128,7 @@ Each directory contains its own README with detailed information about the confi
 
 </details>
 
-## 📌 **To-Do**
+## **To-Do**
 
 - [x] Readme
 - [x] Setup basic o11y
@@ -129,7 +136,3 @@ Each directory contains its own README with detailed information about the confi
 - [ ] Make Terraform and Packer fetch secrets from Vault
 - [ ] Setup a CI/CD pipeline
 - [ ] Migrate services to k3s
-
-## **Credits**
-
-- Inspired by [mafyuh](https://github.com/Mafyuh)
